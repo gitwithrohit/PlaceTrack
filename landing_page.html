@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PlacementPortal - Track Your Placements, Crack Your Interviews</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d8dae2",
+                    "surface-tint": "#005eb5",
+                    "background": "#f9f9ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eff0f9",
+                    "primary-container": "#0a66c2",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-surface-variant": "#414752",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#a94b00",
+                    "on-tertiary-fixed-variant": "#773300",
+                    "surface-container-high": "#e6e8f0",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#ffe0d1",
+                    "on-secondary-container": "#54647a",
+                    "on-background": "#191c21",
+                    "on-primary-fixed-variant": "#00468a",
+                    "inverse-surface": "#2e3037",
+                    "surface-container": "#ecedf6",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-primary-fixed": "#001b3d",
+                    "tertiary": "#833900",
+                    "surface": "#f9f9ff",
+                    "tertiary-fixed": "#ffdbca",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#d0e1fb",
+                    "inverse-primary": "#a8c8ff",
+                    "outline": "#727783",
+                    "on-surface": "#191c21",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-highest": "#e1e2ea",
+                    "secondary": "#505f76",
+                    "primary": "#004e99",
+                    "tertiary-fixed-dim": "#ffb68e",
+                    "on-primary-container": "#dbe6ff",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "outline-variant": "#c1c6d4",
+                    "surface-container-low": "#f2f3fb",
+                    "primary-fixed-dim": "#a8c8ff",
+                    "surface-variant": "#e1e2ea",
+                    "on-tertiary-fixed": "#331200"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1.5rem",
+                    "xs": "0.25rem",
+                    "md": "1rem",
+                    "container-max": "1280px",
+                    "sm": "0.5rem",
+                    "xl": "2.5rem",
+                    "lg": "1.5rem",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-main": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Manrope"
+                    ],
+                    "h2": [
+                            "Inter"
+                    ],
+                    "h1": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "stats-number": [
+                            "Manrope"
+                    ]
+            },
+            "fontSize": {
+                    "body-main": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "letterSpacing": "0",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "h2": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h1": [
+                            "36px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "letterSpacing": "0",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "stats-number": [
+                            "28px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopNavBar (Rendered from JSON Specification) -->
+<nav class="fixed top-0 w-full z-40 bg-white/70 dark:bg-slate-900/80 backdrop-blur-md border-b border-white/20 dark:border-slate-700/50 shadow-[0_4px_30px_rgba(0,0,0,0.05)] flex justify-between items-center px-6 py-3 backdrop-saturate-150">
+<!-- Brand -->
+<div class="text-xl font-bold tracking-tighter text-[#0A66C2] dark:text-white flex items-center gap-2">
+            PlacementPortal
+        </div>
+<!-- Search / Actions Container -->
+<div class="flex items-center gap-4">
+<!-- Trailing Icons -->
+<button class="text-slate-600 dark:text-slate-400 hover:bg-white/40 dark:hover:bg-slate-800/50 transition-all duration-200 active:scale-95 duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-600 dark:text-slate-400 hover:bg-white/40 dark:hover:bg-slate-800/50 transition-all duration-200 active:scale-95 duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<!-- Profile Image Placeholder -->
+<div class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant overflow-hidden flex-shrink-0 cursor-pointer">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Headshot of a smiling young professional man with short dark hair wearing a light blue collared shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfVAtYDGS-MksBbNfrDfv_1uBstnKCxsfxm_wtXy1b0Jfs-3yfLweo_x2LobSKnv17Cv8ZofUfZWPA3hVRVNNmh8zyIcgSt8wvuzpmoId2V5bfyS8BUvn6jGQiD4DFzQk_rREOxbc2_yHmHXFqEYS2pdi_qMFScZaRTOgood2SVyqxzHLOYBYxXSvI6fFK83qSnpkrSUuya9br3aYzfKb0iZpjanmGzwd1F4NEAKhun9Ia9E3euXunuRythV-smlkvO62H3t4bR9U"/>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden flex items-center justify-center min-h-[870px]">
+<!-- Decorative Background Elements -->
+<div class="absolute inset-0 z-0 bg-surface-container-lowest">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-secondary-container/30 rounded-full blur-3xl"></div>
+<!-- Abstract Hero Graphic -->
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-20 mix-blend-multiply bg-cover bg-center" data-alt="Abstract view of modern high-rise office building facades reflecting blue sky with soft lens flare" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDE8BvfFaUu9teo0_Ee9MDf84SE_d741OC8rew9LpvKoiSluh6WVhlIF0ZmZLTr5fZT5qMd76gsxRGAzdeC4Jjh6CSFuh3h1lCJcJGjDukIQnjyYERn0DEATdxye3P0bfavSNrsGwxuHNSIOz4ODAe52KZ_OuhaHXV_C_g_En68CT6bwJ9JreCYDUn2yn09zG9uAv3AaeJHl3FPZ_To36dUM2bwORdg7or6IWaI3juZ_Q01yuejeyRVoKCFeu2NVXsQc6oP4UXZfxg');"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-gutter flex flex-col items-center text-center">
+<span class="font-label-caps text-label-caps text-primary bg-primary-container/20 px-md py-xs rounded-full mb-md backdrop-blur-sm border border-primary/10">
+                    YOUR CAREER ACCELERATOR
+                </span>
+<h1 class="font-h1 text-h1 text-on-surface max-w-4xl mb-lg">
+                    Track Your Placements,<br/> Crack Your Interviews
+                </h1>
+<p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mb-xl">
+                    The ultimate command center for students navigating the transition from campus to corporate. Organize applications, perfect your resume, and analyze your performance.
+                </p>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-primary text-on-primary font-body-main text-body-main px-xl py-md rounded-lg shadow-md hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300 font-medium">
+                        Get Started
+                    </button>
+<button class="bg-surface-container-lowest/80 backdrop-blur-sm border border-outline-variant text-on-surface font-body-main text-body-main px-xl py-md rounded-lg hover:bg-surface-container transition-all duration-300 font-medium">
+                        Login
+                    </button>
+</div>
+</div>
+</section>
+<!-- Features Section (Glassmorphic Cards) -->
+<section class="py-24 bg-surface relative z-10">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-xl">
+<h2 class="font-h1 text-h1 text-on-surface mb-sm">Everything you need to succeed</h2>
+<p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mx-auto">Tools designed to reduce placement anxiety and increase your conversion rate.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Feature 1: Job Tracking -->
+<div class="bg-surface-container-lowest/70 backdrop-blur-xl border border-white/40 rounded-xl p-lg shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:translate-y-[-4px] transition-transform duration-300 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:bg-primary-container/20 transition-colors"></div>
+<div class="w-12 h-12 bg-surface rounded-lg border border-outline-variant/30 flex items-center justify-center mb-md relative z-10 shadow-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<h3 class="font-h2 text-h2 text-on-surface text-xl mb-sm relative z-10">Job Tracking</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant relative z-10">Visualize your entire funnel. Track status from 'Applied' to 'Offer' seamlessly.</p>
+</div>
+<!-- Feature 2: Interview Scheduling -->
+<div class="bg-surface-container-lowest/70 backdrop-blur-xl border border-white/40 rounded-xl p-lg shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:translate-y-[-4px] transition-transform duration-300 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary-container/10 rounded-full blur-2xl -mr-16 -mt-16 group-hover:bg-tertiary-container/20 transition-colors"></div>
+<div class="w-12 h-12 bg-surface rounded-lg border border-outline-variant/30 flex items-center justify-center mb-md relative z-10 shadow-sm">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">event_available</span>
+</div>
+<h3 class="font-h2 text-h2 text-on-surface text-xl mb-sm relative z-10">Scheduling</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant relative z-10">Never miss a round. Sync with calendar to manage clashing company timelines.</p>
+</div>
+<!-- Feature 3: Resume Builder -->
+<div class="bg-surface-container-lowest/70 backdrop-blur-xl border border-white/40 rounded-xl p-lg shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:translate-y-[-4px] transition-transform duration-300 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/20 rounded-full blur-2xl -mr-16 -mt-16 group-hover:bg-secondary-container/30 transition-colors"></div>
+<div class="w-12 h-12 bg-surface rounded-lg border border-outline-variant/30 flex items-center justify-center mb-md relative z-10 shadow-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<h3 class="font-h2 text-h2 text-on-surface text-xl mb-sm relative z-10">Resume Builder</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant relative z-10">Craft ATS-friendly resumes tailored to specific roles with our smart templates.</p>
+</div>
+<!-- Feature 4: Analytics -->
+<div class="bg-surface-container-lowest/70 backdrop-blur-xl border border-white/40 rounded-xl p-lg shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:translate-y-[-4px] transition-transform duration-300 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-error-container/20 rounded-full blur-2xl -mr-16 -mt-16 group-hover:bg-error-container/30 transition-colors"></div>
+<div class="w-12 h-12 bg-surface rounded-lg border border-outline-variant/30 flex items-center justify-center mb-md relative z-10 shadow-sm">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<h3 class="font-h2 text-h2 text-on-surface text-xl mb-sm relative z-10">Analytics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant relative z-10">Identify bottlenecks. See exactly where you drop off in the interview process.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-24 bg-surface-container-low relative">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-xl">
+<span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase mb-sm block">Success Stories</span>
+<h2 class="font-h1 text-h1 text-on-surface">Hear from recently placed students</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-lg shadow-sm">
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Student avatar" class="w-full h-full object-cover" data-alt="Headshot of a smiling young woman with shoulder-length brown hair wearing a white top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4DX0K1HlhTmxEOxXeV0_jub1mZl1lhv0LFmqKxoppnge_xipcp4YTkdoUTRNENxHlCCwgmvqOlltxGUXLx685n_g2pgDeK5ScvQs0SX46XpR4OmhvVpOCGlm9E6YHSzuE7y2_8fTopEx_DnuJmXI-1eU_Gm_8IGbhmzACCqvM1pyqep7Uw73sTU-O6APoHW7dhD-nFwvjRT8A_cST96FbYk7ByxXPoXt1M2ejoFqFdrOpC02C3RsC34Z_Jdc4F2NG_oKucgFnnfY"/>
+</div>
+<div>
+<h4 class="font-body-main text-body-main font-bold text-on-surface">Sarah Jenkins</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Placed at TechCorp</p>
+</div>
+</div>
+<p class="font-body-main text-body-main text-on-surface-variant italic">"PlacementPortal turned my chaotic spreadsheet of 50+ applications into a streamlined process. I knew exactly when my next technical round was."</p>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-lg shadow-sm">
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Student avatar" class="w-full h-full object-cover" data-alt="Headshot of a confident young man with short hair and light stubble wearing a grey t-shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhtiwRppmCjYCaqzwhRmnnh_sdBtlRqqiB6Mnm0YijoJEVRJiEk56ezYPOn8lg46iCbna5dTpeC-RlxHzLrFSluzJ9BMhBG7S-vGpeGo4m5YWg6c9xHknuEFD_YxJwlnT9V8tuySGnrYGrfj2u_zwmD3XjAJRXY47Fc-CiD6Nf7ABQKeaGchDbPQoCMdldpIrj7i3kAZ6zXkLvogdiL5SvQJQrOho0n3WIfWmlXmASnOSqi59NMwUrV-6JC5KkB13M5q8YwaQzZHA"/>
+</div>
+<div>
+<h4 class="font-body-main text-body-main font-bold text-on-surface">David Chen</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Placed at DataSystems</p>
+</div>
+</div>
+<p class="font-body-main text-body-main text-on-surface-variant italic">"The resume builder templates are incredible. I passed the initial ATS screening for 80% of the roles I applied to after rebuilding my CV here."</p>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-lg shadow-sm">
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Student avatar" class="w-full h-full object-cover" data-alt="Headshot of a professional young woman with dark curly hair wearing a dark blazer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWi5s6KF6pGzPMF_OEMcKQJ36AvuEXrxVUPOE0D3P4P5LyRqWoeZI7blTjIlqF_AOVJBHsd-EA_CA5IvO4wSHMpG86gJhTXNsmCy4aWmcg_soLJeNB12450R83d87fLewu-LD-HP7_jnOt_ZOjkm4u3VFktmaZ7GW6ZSzcDAjqQfOQDmLaFYFv8UNPn2V-zXbY3krhRW2k9bCtX72IIcvVTDfVuyiislpQ-AEVQ2_kDM1oDg-lt8_IMBTQQQsCmRktTVhTVeaTg84"/>
+</div>
+<div>
+<h4 class="font-body-main text-body-main font-bold text-on-surface">Priya Patel</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Placed at Global Finance</p>
+</div>
+</div>
+<p class="font-body-main text-body-main text-on-surface-variant italic">"The analytics dashboard showed me I was failing at the HR round. I focused my prep there and landed an offer three weeks later."</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Professional Footer -->
+<footer class="bg-inverse-surface py-xl border-t border-outline/20">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex items-center gap-2">
+<span class="font-h2 text-h2 text-inverse-primary font-bold tracking-tighter">PlacementPortal</span>
+</div>
+<div class="flex gap-lg">
+<a class="font-body-sm text-body-sm text-inverse-on-surface hover:text-inverse-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-inverse-on-surface hover:text-inverse-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-inverse-on-surface hover:text-inverse-primary transition-colors" href="#">Contact Support</a>
+</div>
+<div class="font-body-sm text-body-sm text-outline">
+                © 2024 PlacementPortal. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

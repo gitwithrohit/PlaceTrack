@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Amazon",
+    "industry": "E-commerce & Cloud",
+    "description": "A global leader in online retail and cloud computing services.",
+    "open_roles": 120,
+    "locations": "Global / Remote",
+    "logo_url": "https://logo.clearbit.com/amazon.com",
+    "status": "actively hiring"
+  },
+  {
+    "name": "Netflix",
+    "industry": "Entertainment & Streaming",
+    "description": "Streaming platform offering movies, TV shows, and original content worldwide.",
+    "open_roles": 35,
+    "locations": "Global",
+    "logo_url": "https://logo.clearbit.com/netflix.com",
+    "status": "actively hiring"
+  },
+  {
+    "name": "Adobe",
+    "industry": "Software",
+    "description": "Provides creative, marketing, and document management solutions.",
+    "open_roles": 58,
+    "locations": "USA / Remote",
+    "logo_url": "https://logo.clearbit.com/adobe.com",
+    "status": "actively hiring"
+  },
+  {
+    "name": "Tesla",
+    "industry": "Automotive & Energy",
+    "description": "Designs electric vehicles and renewable energy solutions.",
+    "open_roles": 76,
+    "locations": "USA / Global",
+    "logo_url": "https://logo.clearbit.com/tesla.com",
+    "status": "actively hiring"
+  },
+  {
+    "name": "Spotify",
+    "industry": "Music Streaming",
+    "description": "Digital music service that gives access to millions of songs and podcasts.",
+    "open_roles": 22,
+    "locations": "Global / Remote",
+    "logo_url": "https://logo.clearbit.com/spotify.com",
+    "status": "actively hiring"
+  }
+]

@@ -1,0 +1,60 @@
+Top 50 Data Structures Problems
+
+1. Reverse a Linked List  
+2. Detect Cycle in Linked List  
+3. Find Middle of Linked List  
+4. Merge Two Sorted Linked Lists  
+5. Remove Nth Node From End of Linked List  
+6. Intersection of Two Linked Lists  
+7. Palindrome Linked List  
+8. Flatten a Multilevel Doubly Linked List  
+9. Implement Stack using Arrays  
+10. Implement Queue using Stacks  
+
+11. Valid Parentheses  
+12. Min Stack (Get minimum in O(1))  
+13. Next Greater Element  
+14. Largest Rectangle in Histogram  
+15. Sliding Window Maximum  
+
+16. Implement Queue using Arrays  
+17. Circular Queue Implementation  
+18. LRU Cache Design  
+19. First Non-Repeating Character in Stream  
+20. Generate Binary Numbers using Queue  
+
+21. Binary Tree Inorder Traversal  
+22. Binary Tree Preorder Traversal  
+23. Binary Tree Postorder Traversal  
+24. Level Order Traversal  
+25. Maximum Depth of Binary Tree  
+
+26. Check if Binary Tree is Balanced  
+27. Diameter of Binary Tree  
+28. Lowest Common Ancestor in Binary Tree  
+29. Validate Binary Search Tree  
+30. Kth Smallest Element in BST  
+
+31. Insert in Binary Search Tree  
+32. Delete Node in BST  
+33. Search in BST  
+34. Convert Sorted Array to BST  
+35. Zigzag Level Order Traversal  
+
+36. Graph BFS Traversal  
+37. Graph DFS Traversal  
+38. Detect Cycle in Undirected Graph  
+39. Detect Cycle in Directed Graph  
+40. Topological Sort  
+
+41. Dijkstra’s Shortest Path Algorithm  
+42. Minimum Spanning Tree (Prim’s Algorithm)  
+43. Minimum Spanning Tree (Kruskal’s Algorithm)  
+44. Number of Islands  
+45. Flood Fill Algorithm  
+
+46. Trie Implementation  
+47. Word Search using Trie  
+48. Longest Common Prefix using Trie  
+49. Disjoint Set (Union-Find)  
+50. Connected Components in Graph
