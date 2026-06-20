@@ -136,32 +136,11 @@ const Landing = () => {
           scrollTrigger: {
             trigger: el,
             start: "top 85%",
-            toggleActions: "restart none none none",
+            once: true,
           },
           delay: parseFloat(el.dataset.delay) || 0,
         },
       );
-    });
-
-    // Specific parallax for background blobs
-    gsap.to(".bg-blob-1", {
-      y: 100,
-      scrollTrigger: {
-        trigger: "body",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-    });
-
-    gsap.to(".bg-blob-2", {
-      y: -100,
-      scrollTrigger: {
-        trigger: "body",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-      },
     });
 
     return () => {
@@ -420,7 +399,7 @@ const Landing = () => {
                   c: "bg-blue-50 text-blue-600",
                 },
                 {
-                  t: "Support TPOs",
+                  t: "Support ",
                   d: "Provide tools to manage students, companies, and placement drives efficiently.",
                   i: "admin_panel_settings",
                   c: "bg-indigo-50 text-indigo-600",

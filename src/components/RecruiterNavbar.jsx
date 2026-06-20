@@ -48,7 +48,7 @@ const RecruiterNavbar = () => {
   }, []);
 
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     let ticking = false;
@@ -58,12 +58,12 @@ const RecruiterNavbar = () => {
           const currentScrollY = window.scrollY;
           if (currentScrollY < 10) {
             setIsVisible(true);
-          } else if (currentScrollY > lastScrollY) {
+          } else if (currentScrollY > lastScrollY.current) {
             setIsVisible(false);
           } else {
             setIsVisible(true);
           }
-          setLastScrollY(currentScrollY);
+          lastScrollY.current = currentScrollY;
           ticking = false;
         });
         ticking = true;
@@ -71,7 +71,7 @@ const RecruiterNavbar = () => {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   if (role !== 'recruiter') return null;
 
@@ -95,8 +95,8 @@ const RecruiterNavbar = () => {
                 />
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center tracking-tighter">
-                <span className="text-xl font-bold text-[#67a070] transition-all duration-500 group-hover:tracking-widest">Place</span>
-                <span className="text-xl font-bold text-slate-900 dark:text-white sm:ml-0.5 transition-all duration-500 group-hover:opacity-100 opacity-80 group-hover:translate-x-1">Track</span>
+                <span className="text-2xl font-bold text-[#67a070] transition-all duration-500 group-hover:tracking-widest">Place</span>
+                <span className="text-2xl font-bold text-slate-800 dark:text-white sm:ml-0.5 transition-all duration-500 group-hover:opacity-100 opacity-80 group-hover:translate-x-1">Track</span>
               </div>
             </Link>
           </div>

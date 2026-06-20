@@ -8,23 +8,23 @@ const AdminNavbar = () => {
   const profileRef = useRef(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY < 10) {
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollY) {
+      } else if (currentScrollY > lastScrollY.current) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -61,8 +61,8 @@ const AdminNavbar = () => {
               </div>
               <div className="flex flex-col tracking-tighter leading-none transition-all duration-500 group-hover:tracking-widest">
                 <div className="flex items-center">
-                  <span className="text-xl font-bold text-[#67a070]">Place</span>
-                  <span className="text-xl font-bold text-[#1a4d2e] dark:text-white ml-0.5 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all">Track</span>
+                  <span className="text-2xl font-bold text-[#67a070]">Place</span>
+                  <span className="text-2xl font-bold text-[#1a4d2e] dark:text-white ml-0.5 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all">Track</span>
                 </div>
                 <span className="text-[9px] text-[#4b5563] dark:text-slate-400 font-bold tracking-[0.2em] mt-1 opacity-60 group-hover:opacity-100 transition-opacity">ADMIN PORTAL</span>
               </div>

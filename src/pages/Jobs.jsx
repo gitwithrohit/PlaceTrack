@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { insforge } from '../services/api';
@@ -30,6 +30,18 @@ const Jobs = () => {
 
   const fetchJobs = async () => {
     try {
+      const cacheKey = `cp_jobs_cache_${user?.id || 'guest'}`;
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          setJobs(parsed.jobs || []);
+          setMyApplications(parsed.myApplications || []);
+          setSavedJobs(parsed.savedJobs || []);
+          setLoading(false);
+        } catch(e) {}
+      }
+
       const queries = [
         insforge.database.from('jobs').select('id, title, company, category, location, job_type, salary, description, created_at, apply_by').order('created_at', { ascending: false })
       ];
@@ -40,12 +52,19 @@ const Jobs = () => {
       }
 
       const results = await Promise.all(queries);
-      setJobs(results[0]?.data || []);
+      const newJobs = results[0]?.data || [];
+      const newMyApps = user ? (results[1]?.data || []) : [];
+      const newSaved = user ? (results[2]?.data?.map(s => s.job_id) || []) : [];
+
+      setJobs(newJobs);
+      setMyApplications(newMyApps);
+      setSavedJobs(newSaved);
       
-      if (user) {
-        setMyApplications(results[1]?.data || []);
-        setSavedJobs(results[2]?.data?.map(s => s.job_id) || []);
-      }
+      localStorage.setItem(cacheKey, JSON.stringify({
+        jobs: newJobs,
+        myApplications: newMyApps,
+        savedJobs: newSaved
+      }));
     } catch (e) {
       console.error('Parallel fetch error:', e);
     } finally {
@@ -74,17 +93,19 @@ const Jobs = () => {
     }
   };
 
-  const filtered = jobs.filter(j => {
-    const q = search.toLowerCase();
-    const matchesSearch = !q || (j.title?.toLowerCase().includes(q)) || (j.company?.toLowerCase().includes(q));
-    const matchesLocation = !locationFilter || (j.location && j.location.toLowerCase() === locationFilter.toLowerCase());
-    const matchesCategory = !categoryFilter || (j.category && j.category.toLowerCase() === categoryFilter.toLowerCase());
-    return matchesSearch && matchesLocation && matchesCategory;
-  }).sort((a, b) => {
-    if (sortOrder === 'latest') return new Date(b.created_at) - new Date(a.created_at);
-    if (sortOrder === 'last') return new Date(a.created_at) - new Date(b.created_at);
-    return 0;
-  });
+  const filtered = useMemo(() => {
+    return jobs.filter(j => {
+      const q = search.toLowerCase();
+      const matchesSearch = !q || (j.title?.toLowerCase().includes(q)) || (j.company?.toLowerCase().includes(q));
+      const matchesLocation = !locationFilter || (j.location && j.location.toLowerCase() === locationFilter.toLowerCase());
+      const matchesCategory = !categoryFilter || (j.category && j.category.toLowerCase() === categoryFilter.toLowerCase());
+      return matchesSearch && matchesLocation && matchesCategory;
+    }).sort((a, b) => {
+      if (sortOrder === 'latest') return new Date(b.created_at) - new Date(a.created_at);
+      if (sortOrder === 'last') return new Date(a.created_at) - new Date(b.created_at);
+      return 0;
+    });
+  }, [jobs, search, locationFilter, categoryFilter, sortOrder]);
 
   if (loading) return <PageSkeleton />;
 
@@ -96,7 +117,7 @@ const Jobs = () => {
         {/* Expanded Header */}
         <header className="mb-14 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
           <div>
-            <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight mb-2">Student Jobs</h1>
+            <h1 className="text-3xl font-bold text-slate-800 dark:text-white mb-2">Student Jobs</h1>
             <p className="text-slate-400 dark:text-gray-400 font-bold text-[11px] uppercase tracking-[0.2em]">Premium opportunities for your career path</p>
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-6 w-full lg:w-auto">

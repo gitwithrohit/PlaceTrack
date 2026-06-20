@@ -7,10 +7,16 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          "vendor-react": ["react", "react-dom", "react-router-dom"],
-          "vendor-ui": ["react-hot-toast"],
-          "vendor-api": ["@insforge/sdk"],
+        manualChunks(id) {
+          if (id.includes("node_modules/react/") || id.includes("node_modules/react-dom/") || id.includes("node_modules/react-router-dom/")) {
+            return "vendor-react";
+          }
+          if (id.includes("node_modules/react-hot-toast/")) {
+            return "vendor-ui";
+          }
+          if (id.includes("node_modules/@insforge/sdk/")) {
+            return "vendor-api";
+          }
         },
       },
     },

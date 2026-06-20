@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { insforge } from '../services/api';
@@ -324,7 +324,7 @@ const StudentDashboard = () => {
                 {/* Company Logo/Icon */}
                 <div className="w-20 h-20 rounded-3xl bg-white dark:bg-[#1a4d2e]/20 flex items-center justify-center shrink-0 shadow-sm border border-slate-50 dark:border-white/5 overflow-hidden">
                   {job.logo_url ? (
-                    <img src={job.logo_url} alt={job.company} className="w-full h-full object-cover" />
+                    <img src={job.logo_url} alt={job.company} className="w-full h-full object-cover" loading="lazy" />
                   ) : (
                     <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">
                       {job.company.charAt(0)}

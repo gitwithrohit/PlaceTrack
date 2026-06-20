@@ -19,29 +19,28 @@ const TextType = ({
   useEffect(() => {
     if (!started) return;
 
-    const handleAction = () => {
-      if (!isDeleting) {
-        // Typing
-        setDisplayText(text.substring(0, displayText.length + 1));
-        
-        if (displayText === text) {
-          setTimeout(() => setIsDeleting(true), pauseDuration);
-        }
+    let timer;
+    if (!isDeleting) {
+      if (displayText !== text) {
+        timer = setTimeout(() => {
+          setDisplayText(text.substring(0, displayText.length + 1));
+        }, typingSpeed);
       } else {
-        // Deleting
-        setDisplayText(text.substring(0, displayText.length - 1));
-        
-        if (displayText === '') {
-          setIsDeleting(false);
-          // Optional: add a small delay before restarting
-        }
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, pauseDuration);
       }
-    };
+    } else {
+      if (displayText !== '') {
+        timer = setTimeout(() => {
+          setDisplayText(text.substring(0, displayText.length - 1));
+        }, deletingSpeed);
+      } else {
+        setIsDeleting(false);
+      }
+    }
 
-    const speed = isDeleting ? deletingSpeed : typingSpeed;
-    const timeout = setTimeout(handleAction, (displayText === text && !isDeleting) ? pauseDuration : speed);
-    
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(timer);
   }, [displayText, isDeleting, text, typingSpeed, deletingSpeed, pauseDuration, started]);
 
   return <>{displayText || '\u00A0'}</>;
