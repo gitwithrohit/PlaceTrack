@@ -17,6 +17,10 @@ const Signup = () => {
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
+    if (role === 'admin') {
+      toast.error('Admin registration is closed.');
+      return;
+    }
     setLoading(true);
     try {
       const { data } = await signup(email, password, role, name);
@@ -126,7 +130,7 @@ const Signup = () => {
         </div>
 
         <div className="flex p-1 bg-slate-50 rounded-xl mb-6 border border-slate-100 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-          {['student', 'admin', 'recruiter'].map((r) => (
+          {['student', 'recruiter'].map((r) => (
             <button
               key={r}
               className={`flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all duration-300 capitalize ${role === r ? `bg-white shadow-sm ${theme.text}` : 'text-slate-500 hover:text-slate-700'}`}
